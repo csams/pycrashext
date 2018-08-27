@@ -1,14 +1,9 @@
 """
  Written by Daniel Sungju Kwon
 """
-
-from __future__ import print_function
-from __future__ import division
-
-from pykdump.API import *
-
+from __future__ import division, print_function
+from pykdump.API import exec_crash_command
 import sys
-import os
 
 BLACK = 1
 RED = 2
@@ -43,28 +38,29 @@ MODE_MASK = 0xff00
 
 
 color_list = {
-    BLACK : "\\033[30m",
-    RED : "\\033[31m",
-    GREEN : "\\033[32m",
-    YELLOW : "\\033[33m",
-    BLUE : "\\033[34m",
-    MAGENTA : "\\033[35m",
-    CYAN : "\\033[36m",
-    LIGHTGRAY : "\\033[37m",
-    DARKGRAY : "\\033[38m",
-    LIGHTRED : "\\033[91m",
-    LIGHTGREEN : "\\033[92m",
-    LIGHTYELLOW : "\\033[93m",
-    LIGHTBLUE : "\\033[94m",
-    LIGHTMAGENTA : "\\033[95m",
-    LIGHTCYAN : "\\033[96m",
-    WHITE : "\\033[97m",
-    RESET : "\\033[0m",
-    BOLD : "\\033[1m",
-    BLINK : "\\033[5m",
-    UNDERLINE : "\\033[4m",
-    INVERT : "\\033[7m",
+    BLACK: "\\033[30m",
+    RED: "\\033[31m",
+    GREEN: "\\033[32m",
+    YELLOW: "\\033[33m",
+    BLUE: "\\033[34m",
+    MAGENTA: "\\033[35m",
+    CYAN: "\\033[36m",
+    LIGHTGRAY: "\\033[37m",
+    DARKGRAY: "\\033[38m",
+    LIGHTRED: "\\033[91m",
+    LIGHTGREEN: "\\033[92m",
+    LIGHTYELLOW: "\\033[93m",
+    LIGHTBLUE: "\\033[94m",
+    LIGHTMAGENTA: "\\033[95m",
+    LIGHTCYAN: "\\033[96m",
+    WHITE: "\\033[97m",
+    RESET: "\\033[0m",
+    BOLD: "\\033[1m",
+    BLINK: "\\033[5m",
+    UNDERLINE: "\\033[4m",
+    INVERT: "\\033[7m",
 }
+
 
 def set_color(color_mix):
     if not sys.stdout.isatty():
