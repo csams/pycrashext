@@ -30,7 +30,7 @@ class prerequisite(dr.ComponentType):
 
 
 @datasource()
-def get_system_info():
+def get_system_info(broker):
     sysinfo = {}
     resultlines = exec_crash_command("sys").splitlines()
     for line in resultlines:

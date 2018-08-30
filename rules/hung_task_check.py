@@ -4,7 +4,7 @@ import math
 import operator
 
 from autocheck import prerequisite
-from insights.core.plugins import datasource, rule, make_pass, make_fail
+from insights.core.plugins import datasource, rule, make_fail
 from pykdump.API import exec_crash_command, readSymbol
 from . import STANDARD_FAIL, STANDARD_PASS
 
@@ -14,7 +14,7 @@ CONTENT = {PASS: STANDARD_PASS, FAIL: STANDARD_FAIL}
 
 
 @datasource()
-def ps_m():
+def ps_m(broker):
     return exec_crash_command("ps -m")
 
 
